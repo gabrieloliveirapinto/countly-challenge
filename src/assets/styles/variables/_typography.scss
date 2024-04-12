@@ -1,0 +1,28 @@
+$font-sans-serif: 'Inter', sans-serif;
+
+/* Font Sizes */
+
+$font-size-xxs: 4px;
+$font-size-xs: 8px;
+$font-size-sm: 16px;
+$font-size-md: 24px;
+$font-size-lg: 32px;
+$font-size-xl: 40px;
+$font-size-xxl: 42px;
+
+/* Line Heights */
+
+$font-line-height-xxs: $font-size-xxs * 1.5;
+$font-line-height-xs: $font-size-xs * 1.5;
+$font-line-height-sm: $font-size-sm * 1.5;
+$font-line-height-md: $font-size-md * 1.5;
+$font-line-height-lg: $font-size-lg * 1.5;
+$font-line-height-xl: $font-size-xl * 1.5;
+$font-line-height-xxl: $font-size-xxl * 1.5;
+
+/* Font Weights */
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
