@@ -2,6 +2,7 @@
   <div
     v-if="icon"
     class="base-icon"
+    :class="classes"
   >
     <template v-if="icon">
       <component
@@ -48,7 +49,13 @@ const props = defineProps({
     default: null,
     type: String
   },
+
   name: {
+    default: null,
+    type: String
+  },
+
+  size: {
     default: null,
     type: String
   }
@@ -57,6 +64,13 @@ const props = defineProps({
 
 // Computed
 
+const classes = computed(() => {
+  const classesObject = {};
+
+  if (props.size) classesObject[`base-icon--${props.size}`] = true;
+
+  return classesObject;
+});
 const icon = computed(() => availableIcons[props.name]);
 
 </script>
@@ -72,6 +86,13 @@ const icon = computed(() => availableIcons[props.name]);
   svg {
     height: 100%;
     width: auto;
+  }
+
+  // .base-icon--small
+  &--small {
+    min-width: $layout-unit-sm;
+    min-height: $layout-unit-sm;
+    height: $layout-unit-sm;
   }
 }
 </style>
