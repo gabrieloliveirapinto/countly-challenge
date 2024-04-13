@@ -1,5 +1,10 @@
 <template>
-  <BasePanel class="event-card">
+  <BasePanel
+    class="event-card"
+    :class="classes"
+    :no-background="noBackground"
+    :no-padding="noPadding"
+  >
     <h2
       v-if="title"
       class="event-card__title"
@@ -23,11 +28,19 @@
           class="event-card__percentage"
           :class="percentageDisplayClasses"
         >
-          <BaseIcon :name="percentageIconName" />
+          <BaseIcon
+            :name="percentageIconName"
+            :size="isProgressBarVisible ? 'small' : null"
+          />
           {{ percentageDisplay }}
         </p>
       </div>
     </div>
+    <ProgressBar
+      v-if="isProgressBarVisible"
+      class="event-card__progress-bar"
+      :value="progress"
+    />
   </BasePanel>
 </template>
 
@@ -36,24 +49,44 @@ import { computed } from 'vue';
 
 import BaseIcon from '@/components/BaseIcon';
 import BasePanel from '@/components/BasePanel';
+import ProgressBar from '@/components/ProgressBar';
 
 const props = defineProps({
   name: {
     default: null,
     type: String
   },
+
+  noBackground: {
+    default: false,
+    type: Boolean
+  },
+
+  noPadding: {
+    default: false,
+    type: Boolean
+  },
+
   percentage: {
     default: null,
     type: Object
   },
+
+  progress: {
+    default: null,
+    type: Number
+  },
+
   title: {
     default: null,
     type: String
   },
+
   value: {
     default: 0,
     type: Number
   },
+
   withProgressBar: {
     default: false,
     type: Boolean
@@ -61,6 +94,8 @@ const props = defineProps({
 });
 
 // Computed 
+
+const isProgressBarVisible = computed(() => props.withProgressBar && typeof props.progress === 'number');
 
 const percentageDisplay = computed(() => {
   const percentageAsNumber = typeof props.percentage?.value !== 'number' ?
@@ -93,6 +128,12 @@ const percentageIconName = computed(() => {
 const valueDisplay = computed(() => {
   return props.value.toLocaleString('en-US', { maximumFractionDigits: 2 });
 });
+
+// Computed with dependencies
+
+const classes = computed(() => ({
+  'event-card--with-progressbar': isProgressBarVisible.value
+}));
 </script>
 
 <style lang="scss" scoped>
@@ -135,6 +176,11 @@ const valueDisplay = computed(() => {
     }
   }
 
+  // .event-card__progress-bar
+  &__progress-bar {
+    margin-top: $layout-unit-md;
+  }
+
   // .event-card__values
   &__value {
     color: $color-blue1;
@@ -146,6 +192,55 @@ const valueDisplay = computed(() => {
     display: flex;
     flex-direction: column;
     gap: $layout-unit-xs;
+  }
+
+  // .event-card--with-progressbar
+  &--with-progressbar {
+
+    // .event-card--with-progressbar .event-card__infos
+    // .event-card--with-progressbar .event-card__values
+    & .event-card__infos,
+    & .event-card__values {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+
+    // .event-card--with-progressbar .event-card__name
+    // .event-card--with-progressbar .event-card__percentage
+    & .event-card__name,
+    & .event-card__percentage {
+      font-size: $font-size-sm;
+      line-height: $font-line-height-sm;
+    }
+
+    // .event-card--with-progressbar .event-card__icon
+    & .event-card__icon {
+      display: none;
+    }
+
+    // .event-card--with-progressbar .event-card__value
+    & .event-card__value {
+      font-size: $font-size-md;
+      line-height: $font-line-height-md;
+      font-weight: $font-weight-regular;
+    }
+
+    @include media-breakpoint-up(lg) {
+
+      // .event-card--with-progressbar .event-card__name
+      // .event-card--with-progressbar .event-card__percentage
+      & .event-card__name,
+      & .event-card__percentage {
+        font-size: $font-size-md;
+        line-height: $font-line-height-md;
+      }
+
+      // .event-card--with-progressbar .event-card__value
+      & .event-card__value {
+        font-size: $font-size-lg;
+        line-height: $font-line-height-lg;
+      }
+    }
   }
 
   @include media-breakpoint-up(md) {
