@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <NavigationBar class="app__navigation" />
-    <div class="app__content">
+    <div class="app__content container-fluid">
       <RouterView />
     </div>
   </div>
