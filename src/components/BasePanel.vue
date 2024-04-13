@@ -14,6 +14,16 @@ const AVAILABLE_PADDING_SIZES = ['small', 'default', 'large'];
 
 
 const props = defineProps({
+  noBackground: {
+    default: false,
+    type: Boolean
+  },
+
+  noPadding: {
+    default: false,
+    type: Boolean
+  },
+
   paddingSize: {
     default: 'default',
     type: String
@@ -21,9 +31,13 @@ const props = defineProps({
 });
 
 const classes = computed(() => {
-  const classesObject = {};
+  const classesObject = {
+    'base-panel--no-background': props.noBackground,
+    'base-panel--no-padding': props.noPadding
+  };
 
   if (
+    !props.noPadding &&
     !!props.paddingSize &&
     AVAILABLE_PADDING_SIZES.includes(props.paddingSize) &&
     props.paddingSize !== 'default'
@@ -48,6 +62,15 @@ const classes = computed(() => {
   // .base-panel--large-padding
   &--large-padding {
     padding: $layout-unit-lg;
+  }
+
+  &--no-background {
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  &--no-padding {
+    padding: 0;
   }
 
   // .base-panel--small-padding
