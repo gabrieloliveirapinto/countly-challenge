@@ -26,6 +26,7 @@ import book from '@/assets/icons/book.svg';
 import calendar from '@/assets/icons/calendar.svg';
 import clock from '@/assets/icons/clock.svg';
 import download from '@/assets/icons/download.svg';
+import questionMark from '@/assets/icons/question-mark.svg';
 import search from '@/assets/icons/search.svg';
 import togglerBlock from '@/assets/icons/toggler-block.svg';
 
@@ -37,6 +38,7 @@ const availableIcons = {
   calendar,
   clock,
   download,
+  'question-mark': questionMark,
   search,
   'toggler-block': togglerBlock
 };
