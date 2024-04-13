@@ -1,10 +1,17 @@
 <template>
   <div class="events-overview">
     <div class="row">
-      <div class="col-12 col-lg-5 offset-lg-1">
+      <div class="col-12 col-md-5 offset-md-1">
         <FeaturedEventsSection
-          class="events-overview__featured-events"
+          class="events-overview__section"
           :featured-events="featuredEvents"
+        />
+      </div>
+      <div class="col-12 col-md-5">
+        <EventsCardList
+          class="events-overview__section"
+          :events="topEvents"
+          with-progress-bar
         />
       </div>
     </div>
@@ -13,6 +20,7 @@
 
 <script setup>
 import FeaturedEventsSection from '@/components/FeaturedEventsSection';
+import EventsCardList from '@/components/EventsCardList';
 
 // Mocked data
 
@@ -44,22 +52,65 @@ const featuredEvents = [
       type: 'increase'
     }
   }
+];
+
+const topEvents = [
+  {
+    id: 1,
+    name: 'period-change',
+    value: 329272,
+    percentage: {
+      value: 30.0,
+      type: 'increase'
+    },
+    progress: 94.3
+  },
+  {
+    id: 2,
+    name: 'Ping',
+    value: 17902,
+    percentage: {
+      value: 20.2,
+      type: 'increase'
+    },
+    progress: 5.1
+  },
+  {
+    id: 3,
+    name: 'Cohort-create',
+    value: 1015,
+    percentage: {
+      value: 10,
+      type: 'increase'
+    },
+    progress: 0.3
+  },
+  {
+    id: 4,
+    name: 'period-change',
+    value: 329272,
+    percentage: {
+      value: 30.0,
+      type: 'increase'
+    },
+    progress: 94.3
+  }
 ]
 </script>
 
 <style lang="scss" scoped>
 .events-overview {
 
-  // .events-overview__featured-events
-  &__featured-events {
-    padding-top: $layout-unit-lg;
+  // .events-overview__section
+  &__section {
+    margin: $layout-unit-lg 0;
   }
 
   @include media-breakpoint-up(lg) {
 
-    // .events-overview__featured-events
-    &__featured-events {
-      padding-top: 2 * $layout-unit-xxl;
+    // .events-overview__section
+    &__section {
+      margin: 2 * $layout-unit-xxl 0;
     }
   }
 }
