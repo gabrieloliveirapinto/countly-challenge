@@ -4,12 +4,15 @@
       v-for="item in list"
       :key="item.id"
       class="event-card-list__item"
-      :name="item.name"
+      :chart-data="withChart ? item.chartData : null"
+      :name="!withChart ? item.name : 'Count'"
       no-background
       no-padding
       :value="item.value"
       :percentage="item.percentage"
       :progress="item.progress"
+      :title="withChart ? item.name : null"
+      :with-chart="withChart"
       :with-progress-bar="withProgressBar"
     />
   </BasePanel>
@@ -26,6 +29,11 @@ const props = defineProps({
     type: Array
   },
 
+  withChart: {
+    default: false,
+    type: Boolean
+  },
+
   withProgressBar: {
     default: false,
     type: Boolean
@@ -36,7 +44,7 @@ const list = computed(() => {
   if (!Array.isArray(props.events)) return [];
 
   return props.events.filter(Boolean);
-})
+});
 </script>
 
 <style lang="scss" scoped>
