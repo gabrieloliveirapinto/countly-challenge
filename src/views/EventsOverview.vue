@@ -15,12 +15,18 @@
         />
       </div>
     </div>
+    <div class="row">
+      <div class="col-12 col-md-10 offset-md-1">
+        <MonitorEventsSection class="events-overview__section" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import FeaturedEventsSection from '@/components/FeaturedEventsSection';
 import EventsCardList from '@/components/EventsCardList';
+import MonitorEventsSection from '@/components/MonitorEventsSection';
 
 // Mocked data
 
@@ -95,7 +101,7 @@ const topEvents = [
     },
     progress: 94.3
   }
-]
+];
 </script>
 
 <style lang="scss" scoped>
