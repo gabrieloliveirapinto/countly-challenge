@@ -41,17 +41,28 @@
       class="event-card__progress-bar"
       :value="progress"
     />
+    <BarChart
+      v-if="isChartVisible"
+      class="event-card__chart"
+      :data="chartData"
+    />
   </BasePanel>
 </template>
 
 <script setup>
 import { computed } from 'vue';
 
+import BarChart from '@/components/BarChart';
 import BaseIcon from '@/components/BaseIcon';
 import BasePanel from '@/components/BasePanel';
 import ProgressBar from '@/components/ProgressBar';
 
 const props = defineProps({
+  chartData: {
+    default: null,
+    type: Array
+  },
+
   name: {
     default: null,
     type: String
@@ -87,6 +98,11 @@ const props = defineProps({
     type: Number
   },
 
+  withChart: {
+    default: false,
+    type: Boolean
+  },
+
   withProgressBar: {
     default: false,
     type: Boolean
@@ -94,6 +110,8 @@ const props = defineProps({
 });
 
 // Computed 
+
+const isChartVisible = computed(() => props.withChart && Array.isArray(props.chartData));
 
 const isProgressBarVisible = computed(() => props.withProgressBar && typeof props.progress === 'number');
 
@@ -132,12 +150,18 @@ const valueDisplay = computed(() => {
 // Computed with dependencies
 
 const classes = computed(() => ({
+  'event-card--with-chart': isChartVisible.value,
   'event-card--with-progressbar': isProgressBarVisible.value
 }));
 </script>
 
 <style lang="scss" scoped>
 .event-card {
+
+  // .event-card__chart
+  &__chart {
+    margin-top: $layout-unit-md;
+  }
 
   // .event-card__icon
   &__icon {
@@ -194,6 +218,63 @@ const classes = computed(() => ({
     gap: $layout-unit-xs;
   }
 
+  // .event-card__title
+  &__title {
+    font-weight: $font-weight-regular;
+  }
+
+  // .event-card--with-chart
+  &--with-chart {
+
+    // .event-card--with-chart .event-card__infos
+    // .event-card--with-chart .event-card__values
+    & .event-card__infos,
+    & .event-card__values {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+
+    // .event-card--with-chart .event-card__icon
+    & .event-card__icon {
+      display: none;
+    }
+
+    // .event-card--with-chart .event-card__name
+    // .event-card--with-chart .event-card__percentage
+    & .event-card__name,
+    & .event-card__percentage {
+      font-size: $font-size-md;
+      line-height: $font-line-height-md;
+    }
+
+    // .event-card--with-chart .event-card__value
+    & .event-card__value {
+      font-size: $font-size-md;
+      line-height: $font-line-height-md;
+      font-weight: $font-weight-regular;
+    }
+
+    // .event-card--with-chart .event-card__values
+    & .event-card__values {
+      margin-top: $layout-unit-sm;
+    }
+
+    @include media-breakpoint-up(lg) {
+
+      // .event-card--with-chart .event-card__percentage
+      & .event-card__percentage {
+        font-size: $font-size-md;
+        line-height: $font-line-height-md;
+      }
+
+      // .event-card--with-chart .event-card__value
+      & .event-card__value {
+        font-size: $font-size-lg;
+        line-height: $font-line-height-lg;
+      }
+    }
+  }
+
   // .event-card--with-progressbar
   &--with-progressbar {
 
@@ -205,17 +286,17 @@ const classes = computed(() => ({
       align-items: flex-end;
     }
 
+    // .event-card--with-progressbar .event-card__icon
+    & .event-card__icon {
+      display: none;
+    }
+
     // .event-card--with-progressbar .event-card__name
     // .event-card--with-progressbar .event-card__percentage
     & .event-card__name,
     & .event-card__percentage {
       font-size: $font-size-sm;
       line-height: $font-line-height-sm;
-    }
-
-    // .event-card--with-progressbar .event-card__icon
-    & .event-card__icon {
-      display: none;
     }
 
     // .event-card--with-progressbar .event-card__value
