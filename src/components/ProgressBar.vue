@@ -45,7 +45,7 @@ const textDisplay = computed(() => `${percentage.value.toFixed(2)}% of Total`);
   justify-content: flex-start;
   gap: $layout-unit-xs;
 
-  // .progress-bar__display
+  // .progress-bar__background
   &__background {
     position: relative;
     width: 100%;
@@ -69,6 +69,15 @@ const textDisplay = computed(() => `${percentage.value.toFixed(2)}% of Total`);
     height: $layout-unit-sm;
     background-color: $color-blue1;
     border-radius: 20px;
+  }
+
+  @include media-breakpoint-up(md) {
+
+    // .progress-bar__display
+    &__display {
+      font-size: $font-size-sm + $font-size-xs;
+      line-height: $font-line-height-md;
+    }
   }
 }
 </style>
