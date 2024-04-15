@@ -20,12 +20,18 @@
         <MonitorEventsSection class="events-overview__section" />
       </div>
     </div>
+    <div class="row">
+      <div class="col-12 col-md-10 offset-md-1">
+        <EventMetricsSection class="events-overview__section" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import FeaturedEventsSection from '@/components/FeaturedEventsSection';
 import EventsCardList from '@/components/EventsCardList';
+import EventMetricsSection from '@/components/EventMetricsSection';
 import MonitorEventsSection from '@/components/MonitorEventsSection';
 
 // Mocked data
