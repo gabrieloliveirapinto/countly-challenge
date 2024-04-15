@@ -152,6 +152,23 @@ const passThroughClasses = computed(() => ({
     border: 1px solid $color-blue1;
     border-radius: 5px;
     min-height: 2 * $layout-unit-sm + $font-size-md;
+
+    // .calendar-select__element:after
+    &:after {
+      pointer-events: none;
+      content: '';
+
+      position: absolute;
+      top: $layout-unit-sm;
+      right: $layout-unit-sm;
+      transform: translateY(50%);
+
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: $layout-unit-sm solid $color-black;
+    }
   }
 
   // .calendar-select__header
@@ -260,23 +277,6 @@ const passThroughClasses = computed(() => ({
   // .calendar-select--block
   &--block {
     width: 100%;
-  }
-
-  // .calendar-select:after
-  &:after {
-    pointer-events: none;
-    content: '';
-
-    position: absolute;
-    top: $layout-unit-sm;
-    right: $layout-unit-sm;
-    transform: translateY(50%);
-
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: $layout-unit-sm solid $color-black;
   }
 }
 </style>
