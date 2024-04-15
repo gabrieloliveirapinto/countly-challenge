@@ -27,13 +27,12 @@ import BaseIcon from './BaseIcon';
 
 import { useWindowBreakpoint } from '@/composables/windowBreakpoint';
 
-const { isMobile } = useWindowBreakpoint();
 
+const { isMobile } = useWindowBreakpoint();
 
 // Computed
 
 const buttonText = computed(() => (isMobile.value ? null : 'Create New Event'));
-
 </script>
 
 <style lang="scss" scoped>

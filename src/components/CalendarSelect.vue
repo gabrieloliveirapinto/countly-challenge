@@ -40,6 +40,10 @@ import Calendar from 'primevue/calendar';
 import BaseIcon from '@/components/BaseIcon';
 
 
+// Constants
+
+const DATE_FORMAT = 'M dd, yy'
+
 const props = defineProps({
   block: {
     default: false,
@@ -65,10 +69,6 @@ const props = defineProps({
 const emit = defineEmits([
   'update:modelValue'
 ]);
-
-// Constants
-
-const DATE_FORMAT = 'M dd, yy'
 
 // Computed
 
@@ -98,7 +98,6 @@ const passThroughClasses = computed(() => ({
   year: { class: 'calendar-select__table-cell' },
   yearTitle: { class: 'calendar-select__button' }
 }));
-
 </script>
 
 <style lang="scss">
@@ -272,7 +271,6 @@ const passThroughClasses = computed(() => ({
     justify-content: center;
     gap: $layout-unit-xs;
   }
-
 
   // .calendar-select--block
   &--block {

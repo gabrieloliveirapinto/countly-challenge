@@ -32,7 +32,9 @@ import search from '@/assets/icons/search.svg';
 import togglerBlock from '@/assets/icons/toggler-block.svg';
 
 
-const availableIcons = {
+// Constants
+
+const AVAILABLE_ICONS = {
   'arrow-up': arrowUp,
   'arrow-down': arrowDown,
   book,
@@ -71,7 +73,8 @@ const classes = computed(() => {
 
   return classesObject;
 });
-const icon = computed(() => availableIcons[props.name]);
+
+const icon = computed(() => AVAILABLE_ICONS[props.name]);
 
 </script>
 

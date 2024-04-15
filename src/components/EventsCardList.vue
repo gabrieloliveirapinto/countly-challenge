@@ -20,8 +20,10 @@
 
 <script setup>
 import { computed } from 'vue';
+
 import BasePanel from '@/components/BasePanel';
 import EventCard from '@/components/EventCard';
+
 
 const props = defineProps({
   events: {
@@ -39,6 +41,8 @@ const props = defineProps({
     type: Boolean
   }
 });
+
+// Computed
 
 const list = computed(() => {
   if (!Array.isArray(props.events)) return [];

@@ -121,6 +121,7 @@ const modelValue = computed({
     font-size: $font-size-md;
     line-height: $font-line-height-md;
 
+    // .base-input__input::placeholder
     &::placeholder {
       color: $color-gray;
     }

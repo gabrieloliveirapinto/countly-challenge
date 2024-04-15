@@ -10,6 +10,9 @@
 <script setup>
 import { computed } from 'vue';
 
+
+// Constants
+
 const AVAILABLE_PADDING_SIZES = ['small', 'default', 'large'];
 
 
@@ -29,6 +32,8 @@ const props = defineProps({
     type: String
   }
 });
+
+// Computed
 
 const classes = computed(() => {
   const classesObject = {
@@ -64,11 +69,13 @@ const classes = computed(() => {
     padding: $layout-unit-lg;
   }
 
+  // .base-panel--no-background
   &--no-background {
     background-color: transparent;
     border-radius: 0;
   }
 
+  // .base-panel--no-padding
   &--no-padding {
     padding: 0;
   }

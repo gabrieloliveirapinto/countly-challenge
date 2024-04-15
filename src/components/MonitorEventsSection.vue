@@ -33,13 +33,17 @@ import BaseSection from '@/components/BaseSection';
 import CalendarSelect from '@/components/CalendarSelect';
 import EventsCardList from '@/components/EventsCardList';
 
-const selectedDates = ref([]);
 
 const { breakpoint, isMobile } = useWindowBreakpoint();
+
+// State
+
+const selectedDates = ref([]);
 
 const configureEventsButtonText = computed(() => (isMobile.value || breakpoint.value === 'md' ? null : 'Configure Events'));
 
 const events = [
+  // Mocked data
   {
     id: 1,
     chartData: Array.from({ length: 12 }, (_, index) => ({ x: index, y: Math.floor(Math.random() * 100) + 10 })),
@@ -85,7 +89,6 @@ const events = [
     progress: 94.3
   }
 ];
-
 </script>
 
 <style lang="scss" scoped>

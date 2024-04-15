@@ -51,7 +51,9 @@
 
 <script setup>
 import { computed } from 'vue';
+
 import BasePanel from '@/components/BasePanel';
+
 
 const props = defineProps({
   data: {
@@ -66,7 +68,7 @@ const props = defineProps({
 });
 
 // Computed
-console.log(props.data);
+
 const isEmpty = computed(() => !props?.data || (Array.isArray(props.data) && props.data.length === 0));
 </script>
 

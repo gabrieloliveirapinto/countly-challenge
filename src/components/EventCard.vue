@@ -57,6 +57,7 @@ import BaseIcon from '@/components/BaseIcon';
 import BasePanel from '@/components/BasePanel';
 import ProgressBar from '@/components/ProgressBar';
 
+
 const props = defineProps({
   chartData: {
     default: null,

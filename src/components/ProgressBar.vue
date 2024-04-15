@@ -28,6 +28,8 @@ const props = defineProps({
   }
 });
 
+// Computed
+
 const percentage = computed(() => {
   if (typeof props.value !== 'number') return 0;
 

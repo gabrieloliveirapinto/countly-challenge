@@ -38,15 +38,19 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 import BaseButton from '@/components/BaseButton';
 import FeaturedEventsSection from '@/components/FeaturedEventsSection';
 import EventsCardList from '@/components/EventsCardList';
 import EventMetricsSection from '@/components/EventMetricsSection';
 import MonitorEventsSection from '@/components/MonitorEventsSection';
 
-// Mocked data
 
-const featuredEvents = [
+// Computed
+
+const featuredEvents = computed(() => [
+  // Mocked data
   {
     id: 1,
     name: 'Total Event Count',
@@ -74,9 +78,10 @@ const featuredEvents = [
       type: 'increase'
     }
   }
-];
+]);
 
-const topEvents = [
+const topEvents = computed(() => [
+  // Mocked data
   {
     id: 1,
     name: 'period-change',
@@ -117,7 +122,7 @@ const topEvents = [
     },
     progress: 94.3
   }
-];
+]);
 </script>
 
 <style lang="scss" scoped>

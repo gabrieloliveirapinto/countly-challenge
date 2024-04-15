@@ -36,6 +36,7 @@ const props = defineProps({
     default: null,
     type: String
   },
+
   text: {
     default: '',
     type: String
@@ -76,6 +77,8 @@ $padding-md-without-border-width: $layout-unit-md - 1;
 
   transition: background-color 0.3s ease, padding 0.3s ease;
 
+  // .base-button:hover
+  // .base-button:active
   &:hover,
   &:active {
     background-color: $color-blue1;

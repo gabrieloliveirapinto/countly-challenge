@@ -20,6 +20,7 @@
 
 <script setup>
 import { computed } from 'vue';
+
 import { useWindowBreakpoint } from '@/composables/windowBreakpoint';
 
 import BaseInput from '@/components/BaseInput';
@@ -33,6 +34,7 @@ const { isMobile } = useWindowBreakpoint();
 // Computed
 
 const tableData = computed(() => [
+  // Mocked data
   {
     name: 'Event Long Name 1',
     count: 10,
@@ -114,7 +116,4 @@ const tableHeaders = computed(() => [
     label: 'Duration'
   }
 ]);
-
 </script>
-
-<style lang="scss" scoped></style>
