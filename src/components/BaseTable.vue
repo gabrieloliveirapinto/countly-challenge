@@ -18,6 +18,9 @@
           <td
             v-for="header in headers"
             class="base-table__table-cell base-table__table-cell--header"
+            :class="{
+              [`base-table__table-cell--align-${header.alignText}`]: !!header.alignText
+            }"
             :key="header.key"
           >
             {{ header.label }}
@@ -26,7 +29,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="row, index in data"
+          v-for="row in data"
           :key="row.id"
           class="base-table__table-body-row"
         >
@@ -34,6 +37,9 @@
             v-for="header in headers"
             :key="`${row.id}-${header.key}`"
             class="base-table__table-cell"
+            :class="{
+              [`base-table__table-cell--align-${header.alignText}`]: !!header.alignText
+            }"
           >
             {{ row[header.key] }}
           </td>
@@ -92,8 +98,14 @@ const isEmpty = computed(() => !props?.data || (Array.isArray(props.data) && pro
     font-size: $font-size-sm;
     line-height: $font-line-height-sm;
 
+    // .base-table__table-cell:not(:last-child)
     &:not(:last-child) {
       border-right: 1px solid rgba($color-blue1, 0.2);
+    }
+
+    // .base-table__table-cell--align-left
+    &--align-left {
+      text-align: left;
     }
 
     // .base-table__table-cell--header

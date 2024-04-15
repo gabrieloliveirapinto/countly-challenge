@@ -55,6 +55,7 @@ const tableData = computed(() => [
 
 const tableHeaders = computed(() => [
   {
+    alignText: 'left',
     key: 'name',
     label: 'Name'
   },
