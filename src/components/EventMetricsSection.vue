@@ -34,22 +34,64 @@ const { isMobile } = useWindowBreakpoint();
 
 const tableData = computed(() => [
   {
-    name: 'Event 1',
+    name: 'Event Long Name 1',
     count: 10,
     sum: 100,
-    duration: '1h 30m'
+    duration: '10s'
   },
   {
-    name: 'Event 2',
+    name: 'Event Long Name  2',
     count: 20,
     sum: 200,
-    duration: '2h 30m'
+    duration: '20s'
   },
   {
-    name: 'Event 3',
+    name: 'Event Long Name  3',
     count: 30,
     sum: 300,
-    duration: '3h 30m'
+    duration: '30s'
+  },
+  {
+    name: 'Event Long Name 4',
+    count: 10,
+    sum: 100,
+    duration: '10s'
+  },
+  {
+    name: 'Event Long Name  5',
+    count: 20,
+    sum: 200,
+    duration: '20s'
+  },
+  {
+    name: 'Event Long Name  6',
+    count: 30,
+    sum: 300,
+    duration: '30s'
+  },
+  {
+    name: 'Event Long Name 7',
+    count: 10,
+    sum: 100,
+    duration: '10s'
+  },
+  {
+    name: 'Event Long Name  8',
+    count: 20,
+    sum: 200,
+    duration: '20s'
+  },
+  {
+    name: 'Event Long Name  9',
+    count: 30,
+    sum: 300,
+    duration: '30s'
+  },
+  {
+    name: 'Event Long Name 10',
+    count: 10,
+    sum: 100,
+    duration: '10s'
   }
 ]);
 
