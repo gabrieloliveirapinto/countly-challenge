@@ -1,6 +1,15 @@
 <template>
   <div class="events-overview">
     <div class="row">
+      <div class="col-11 offset-1">
+        <BaseButton
+          class="events-overview__button"
+          icon="calendar"
+          text="Last 30 days"
+        />
+      </div>
+    </div>
+    <div class="row">
       <div class="col-12 col-md-5 offset-md-1">
         <FeaturedEventsSection
           class="events-overview__section"
@@ -29,6 +38,7 @@
 </template>
 
 <script setup>
+import BaseButton from '@/components/BaseButton';
 import FeaturedEventsSection from '@/components/FeaturedEventsSection';
 import EventsCardList from '@/components/EventsCardList';
 import EventMetricsSection from '@/components/EventMetricsSection';
@@ -113,12 +123,22 @@ const topEvents = [
 <style lang="scss" scoped>
 .events-overview {
 
+  // .events-overview__button
+  &__button {
+    margin-top: $layout-unit-lg;
+  }
+
   // .events-overview__section
   &__section {
     margin: $layout-unit-lg 0;
   }
 
   @include media-breakpoint-up(lg) {
+
+    // .events-overview__button
+    &__button {
+      margin-top: $layout-unit-xxl;
+    }
 
     // .events-overview__section
     &__section {
