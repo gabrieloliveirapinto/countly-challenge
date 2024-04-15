@@ -1,23 +1,35 @@
 <template>
-  <Calendar
+  <div
     class="calendar-select"
     :class="classes"
-    v-model="dateRanges"
-    :date-format="DATE_FORMAT"
-    icon-display="input"
-    selection-mode="range"
-    show-icon
-    :pt="passThroughClasses"
   >
-    <template #inputicon="{ clickCallback }">
-      <BaseIcon
-        class="calendar-select__icon"
-        color="blue"
-        name="calendar"
-        @click="clickCallback"
-      />
-    </template>
-  </Calendar>
+    <label
+      v-if="label"
+      class="calendar-select__label"
+      :for="id"
+    >
+      {{ label }}
+    </label>
+    <Calendar
+      class="calendar-select__element"
+      v-model="dateRanges"
+      :date-format="DATE_FORMAT"
+      icon-display="input"
+      :id="id"
+      selection-mode="range"
+      show-icon
+      :pt="passThroughClasses"
+    >
+      <template #inputicon="{ clickCallback }">
+        <BaseIcon
+          class="calendar-select__icon"
+          color="blue"
+          name="calendar"
+          @click="clickCallback"
+        />
+      </template>
+    </Calendar>
+  </div>
 </template>
 
 <script setup>
@@ -32,6 +44,16 @@ const props = defineProps({
   block: {
     default: false,
     type: Boolean
+  },
+
+  id: {
+    default: null,
+    type: String
+  },
+
+  label: {
+    default: null,
+    type: String
   },
 
   modelValue: {
@@ -81,24 +103,11 @@ const passThroughClasses = computed(() => ({
 
 <style lang="scss">
 .calendar-select {
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  gap: $layout-unit-xs;
+  width: auto;
   min-width: calc(250px + $layout-unit-md);
-  position: relative;
-
-  padding: $layout-unit-sm - 2px;
-  padding-left: $layout-unit-sm + $layout-unit-md + $layout-unit-xs;
-
-  border: 1px solid $color-blue1;
-  border-radius: 5px;
-  min-height: 2 * $layout-unit-sm + $font-size-md;
-
-  // .calendar-select__panel
-  &__panel {
-    background-color: $color-white;
-    border: 1px solid $color-blue1;
-    border-radius: 5px;
-    padding: $layout-unit-sm;
-  }
 
   // .calendar-select__button
   &__button {
@@ -129,6 +138,20 @@ const passThroughClasses = computed(() => ({
     color: $color-blue1;
     font-size: $font-size-md;
     line-height: $font-line-height-md;
+  }
+
+  // .calendar-select__element
+  &__element {
+    position: relative;
+    width: 100%;
+    background-color: $color-white;
+
+    padding: $layout-unit-sm - 2px;
+    padding-left: $layout-unit-sm + $layout-unit-md + $layout-unit-xs;
+
+    border: 1px solid $color-blue1;
+    border-radius: 5px;
+    min-height: 2 * $layout-unit-sm + $font-size-md;
   }
 
   // .calendar-select__header
@@ -163,6 +186,21 @@ const passThroughClasses = computed(() => ({
 
     font-size: $font-size-md;
     line-height: $font-line-height-md;
+  }
+
+  // .calendar-select__label
+  &__label {
+    font-size: $font-size-sm;
+    line-height: $font-line-height-sm;
+    color: $color-blue1;
+  }
+
+  // .calendar-select__panel
+  &__panel {
+    background-color: $color-white;
+    border: 1px solid $color-blue1;
+    border-radius: 5px;
+    padding: $layout-unit-sm;
   }
 
   // .calendar-select__table
@@ -221,7 +259,6 @@ const passThroughClasses = computed(() => ({
 
   // .calendar-select--block
   &--block {
-    display: block;
     width: 100%;
   }
 

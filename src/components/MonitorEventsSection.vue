@@ -1,6 +1,6 @@
 <template>
   <BaseSection
-    class="monitor-event-section"
+    class="monitor-events-section"
     title="Monitor Events"
   >
     <template #actions>
@@ -9,8 +9,11 @@
         :text="configureEventsButtonText"
       />
       <CalendarSelect
+        class="monitor-events-section__calendar-input"
         v-model="selectedDates"
         :block="isMobile"
+        id="monitor-events-calendar-input"
+        label="Time Period"
       />
     </template>
     <EventsCardList
@@ -44,7 +47,7 @@ const events = [
     value: 329272,
     percentage: {
       value: 30.0,
-      type: 'increase'
+      type: 'decrease'
     },
     progress: 94.3
   },
@@ -66,7 +69,7 @@ const events = [
     value: 1015,
     percentage: {
       value: 10,
-      type: 'increase'
+      type: 'decrease'
     },
     progress: 0.3
   },
@@ -85,4 +88,13 @@ const events = [
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.monitor-events-section {
+
+  // .monitor-events-section__calendar-input
+  &__calendar-input {
+    // Remove label height + spacing from top margin to correctly align button and input 
+    margin-top: -#{$layout-unit-sm + $layout-unit-xs};
+  }
+}
+</style>
