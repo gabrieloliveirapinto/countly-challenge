@@ -95,8 +95,8 @@ const isEmpty = computed(() => !props?.data || (Array.isArray(props.data) && pro
     padding: $layout-unit-xs;
     text-align: center;
 
-    font-size: $font-size-sm;
-    line-height: $font-line-height-sm;
+    font-size: $font-size-md;
+    line-height: $font-line-height-md;
 
     // .base-table__table-cell:not(:last-child)
     &:not(:last-child) {
@@ -120,8 +120,6 @@ const isEmpty = computed(() => !props?.data || (Array.isArray(props.data) && pro
     // .base-table__table-cell
     &__table-cell {
       padding: $layout-unit-sm;
-      font-size: $font-size-md;
-      line-height: $font-line-height-md;
     }
   }
 }
