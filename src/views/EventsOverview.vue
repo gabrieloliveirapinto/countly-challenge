@@ -131,18 +131,20 @@ const topEvents = [
   // .events-overview__section
   &__section {
     margin: $layout-unit-lg 0;
+    margin-top: $layout-unit-md;
   }
 
   @include media-breakpoint-up(lg) {
 
     // .events-overview__button
     &__button {
-      margin-top: $layout-unit-xxl;
+      margin-top: 2 * $layout-unit-xxl;
     }
 
     // .events-overview__section
     &__section {
       margin: 2 * $layout-unit-xxl 0;
+      margin-top: $layout-unit-xl;
     }
   }
 }
